@@ -2,8 +2,7 @@ let courses = ["HTML, CSS", "Javascript", "ReactJS", "NodeJs"];
 
 Array.prototype.forEach2 = function (callBack) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i in this) {
       callBack(this[i], i, this);
     }
   }
@@ -11,8 +10,7 @@ Array.prototype.forEach2 = function (callBack) {
 
 Array.prototype.some2 = function (callBack) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i in this) {
       if (callBack(this[i], i, this)) {
         return true;
       }
@@ -22,8 +20,7 @@ Array.prototype.some2 = function (callBack) {
 
 Array.prototype.every2 = function (callBack) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i in this) {
       if (!callBack(this[i], i, this)) {
         return false;
       }
@@ -34,8 +31,7 @@ Array.prototype.every2 = function (callBack) {
 
 Array.prototype.find2 = function (callBack) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i in this) {
       if (callBack(this[i], i, this)) {
         return this[i];
       }
@@ -46,9 +42,8 @@ Array.prototype.find2 = function (callBack) {
 
 Array.prototype.filter2 = function (callBack) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
     let result = [];
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i in this) {
       if (callBack(this[i], i, this)) {
         result.push(this[i]);
       }
@@ -59,9 +54,8 @@ Array.prototype.filter2 = function (callBack) {
 
 Array.prototype.map2 = function (callBack) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
     let result = [];
-    for (let i = 0; i < arrayLength; i++) {
+    for (let i in this) {
       result.push(callBack(this[i], i, this));
     }
     return result;
@@ -70,7 +64,6 @@ Array.prototype.map2 = function (callBack) {
 
 Array.prototype.reduce2 = function (callBack, initialValue) {
   if (typeof callBack === "function") {
-    let arrayLength = this.length;
     let i = 1;
     let result = this[0];
     if (arguments.length === 2) {
@@ -78,7 +71,7 @@ Array.prototype.reduce2 = function (callBack, initialValue) {
       i = 0;
     }
 
-    for (; i < arrayLength; i++) {
+    for (i in this) {
       result = callBack(result, this[i], i, this);
     }
 
